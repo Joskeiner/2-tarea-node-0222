@@ -6,8 +6,13 @@ app.get('/nombre/:juan/apellido/:perez', (req, res) => {
 
 const express = require('express');
 const  router = express.Router();
-const {saludo}= require("../controller/controllerSalud");
+const {saludo, saludoPost}= require("../controller/controllerSalud");
 
-router.post("/nombreYapellido", saludo)
+router.get("/nombre/:hola/ape/:id", saludo)
+
+//router.post("/nombreYapellido", saludoPost)
+
+router.post("/saludo", saludoPost)
+
 
 module.exports= router;

@@ -4,21 +4,16 @@
                             res.json({resultado :  parseInt(req.params.uno) / parseInt(req.params.dos)})
 
                             : res.json({error: "no se puede dividir por cero"}) ;
-})
+})*/
+const express = require('express');
+const  router = express.Router();
+const {autorizacion ,suma ,division} = require('../controller/controllerMaths');
 
-app.get( "/numero", (req , res)=> {
-    let autorizacion ={
-         par : parseInt(req.query.numero)
-    }
-    autorizacion.par % 2 == 0 ?
-        res.send("autorizado") 
-        : res.send("no autorizado");
-})
+router.get( '/numero', autorizacion)
 
-app.get('/suma/:sumaU/numero/:sumaI' ,(req , res) => {
-    let num1 = Number(req.params.sumaU);
-    let num2 = Number(req.params.sumaI);
-    num1 > 0  &&  num2 > 0 ? 
-        res.json({ resultado: num1 + num2})
-        : res.json({erros : " no se admiten numero menores que 0"})
-}) */
+router.get('/suma/:sumaU/numero/:sumaI' , suma)
+
+
+router.get('/divisor/:uno/dividendo/:dos', division)
+
+module.exports = router;
