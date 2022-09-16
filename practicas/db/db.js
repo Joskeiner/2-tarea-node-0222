@@ -1,0 +1,36 @@
+
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const dbConnection = async () =>{
+     try{
+        await mongoose.connect(process.env.MONGO_JUS)
+        console.log(' Base de datos conectada');
+     }
+     catch{
+        console.log('Error a la hora de iniciar la base base de datos');
+     }
+}
+
+
+module.exports ={dbConnection}
+
+/*
+
+crear y conectar una base de datos a un servidor con express :
+crear un cluster en https://www.mongodb.com/es/cloud/atlas/efficiency
+crear para dicho cluster un usuario y contraseña
+darle accesos de ip
+en el código : 
+el proyecto tiene que tener instalado mongoose
+
+el proyecto debe contar con dos rutas un GET /ver y POST /crear
+tener la función necesaria para conectarse al cluster
+el esquema tiene que ser de una farmacia y tiene que cumplir con los siguientes parámetros:
+
+tener un atributo obligatorio
+tener dos atributos tipo Number
+contar con los campos strings que sean necesarios ( a elección )
+tener un campo booleano
+
+*/
